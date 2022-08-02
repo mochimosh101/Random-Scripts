@@ -56,6 +56,7 @@ a. | Would you like me to use Git Add, Git Commit, and Push?    |
 b. | Would you like to use Git Add?                             |
 c. | Would you like to use Git Commit?                          |
 d. | Would you like to use Git Push?                            |
+x. | Exit Menu                                                  | 
    ==============================================================\n"
 read -r ANSWER
 
@@ -102,6 +103,7 @@ elif [[ $ANSWER == "c" ]]; then
     fi
 
 elif [[ $ANSWER == "d" ]]; then
+
     echo -e "Would you like to use Git Push? (Y/n)"
     read -r push
     if [[ $push != "n" ]]; then
@@ -110,6 +112,13 @@ elif [[ $ANSWER == "d" ]]; then
         echo -e "\n$LINE\nMochiBot has has successfully ran the command Git Push\n$LINE\n"
     
     fi
+
+elif [[ $ANSWER == "x" ]]; then
+
+    echo -e "\nExiting Menu..."
+    sleep 1
+    exit 0
+
 else
 
     echo "EERRROOORRRRRRRR"
