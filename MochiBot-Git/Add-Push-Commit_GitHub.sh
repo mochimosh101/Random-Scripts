@@ -5,8 +5,6 @@ export GITS=('git add .'
              'git push'
              'git pull'
             )
-# Dont jusdge me, this is all I know how to do!
-export dontjudge="\""
 export "LINE======================================================================================="
 
 echo -e "Would you like to have an alias for MochiBot-Git? (y/N)"
