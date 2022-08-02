@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 
 #Note to Self: This is how you make an array with ENV variables
-export GITS=('echo git add .'
-            'echo git commit -m "Updated From Mochis Personal Script"'
-            'echo git push'
+export GITS=('git add .'
+             'git push'
             )
+# Dont jusdge me, this is all I know how to do!
+export dontjudge="\""
 export "LINE======================================================================================="
 
-echo -e "Would you like to have an alias for MochiBot-Git? (Y/n)"
+echo -e "Would you like to have an alias for MochiBot-Git? (y/N)"
 read -r USERINPUT
 
-if [[ $USERINPUT != "n" ]]; then
+if [[ $USERINPUT != "y" ]]; then
 
-    
+    echo "alias mochi=\"/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/Add-Push-Commit_GitHub.sh)\"" >> "$HOME"/.bashrc
+    alias mochi="/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/Add-Push-Commit_GitHub.sh)\""
 
 fi
 
@@ -29,13 +31,15 @@ read -r ANSWER
 
 if [[ "$ANSWER" == "a" ]]; then
 
+    echo -e "What would you like to put in the commit message?"
+    read -r COMMITMESSAGE
     echo
     ${GITS[0]}
     sleep 1
-    ${GITS[1]}
+    git commit -m "$dontjudge""$COMMITMESSAGE""$dontjudge"
     sleep 1
-    ${GITS[2]}
-    echo -e "\n$LINE\nMochiBot has has successfully Add Commit Push you Local Repository!\n$LINE\n"
+    ${GITS[1]}
+    echo -e "\n$LINE\nMochiBot-Git has has successfully Add Commit Push you Local Repository!\n$LINE\n"
 
 elif [[ $ANSWER == "b" ]]; then
     
@@ -44,7 +48,7 @@ elif [[ $ANSWER == "b" ]]; then
     if [[ $add != "n" ]]; then
 
         ${GITS[0]}
-        echo -e "\n$LINE\nMochiBot has has successfully ran the command Git Add\n$LINE\n"
+        echo -e "\n$LINE\nMochiBot-Git has has successfully ran the command Git Add\n$LINE\n"
     
     fi
 
@@ -54,8 +58,11 @@ elif [[ $ANSWER == "c" ]]; then
     read -r commit
     if [[ $commit != "n" ]]; then
 
-        ${GITS[1]}
-        echo -e "\n$LINE\nMochiBot has has successfully ran the command Git Commit\n$LINE\n"
+        echo -e "What would you like to put in the commit message?"
+        read -r COMMITMESSAGE
+        echo
+        echo git commit -m \""$COMMITMESSAGE\""
+        echo -e "\n$LINE\nMochiBot-Git has has successfully ran the command Git Commit\n$LINE\n"
     
     fi
 
