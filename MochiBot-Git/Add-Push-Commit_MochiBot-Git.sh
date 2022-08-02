@@ -25,30 +25,36 @@ clear
 printf "\nWelcome, %s\n" "$NAME!"
 printf "My name is %s\n" "$BOT"
 
-echo -e "Would you like to have an alias for MochiBot-Git? (y/N)"
-read -r ALIASANSWER
-if [[ $ALIASANSWER == "y" ]]; then
-
-echo -e "   ====================================================
-a. | Temporary Alias                                  |
-b. | Permanent Alias For Bash (AKA Linux Bash Right?) |
-   ====================================================\n"
-echo -e "I currently only support Bash for permanent alias
-I Promise I will ask MochiMosh to Update me more!\n"
-echo -e "Please enter the option you want:\n"
-read -r OPTION
-
-    if [[ $OPTION == "a" ]]; then
-        alias "mochigit=/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)\""
-
-    elif [[ $OPTION == "b" ]]; then
-
-        echo "alias mochigit=\"/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)\"" >> "$HOME"/.bashrc
-        alias mochigit="/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)\""
-
-    fi
-
-fi
+##### I will make a Binary Instead... But I currently don't how to... So I will make it later! #####
+#echo -e "Would you like to have an alias for MochiBot-Git? (y/N)"
+#read -r ALIASANSWER
+#if [[ $ALIASANSWER == "y" ]]; then
+#
+#echo -e "   ====================================================
+#a. | Temporary Alias                                  |
+#b. | Permanent Alias For Bash (AKA Linux Bash Right?) |
+#   ====================================================\n"
+#echo -e "I currently only support Bash for permanent alias
+#I Promise I will ask MochiMosh to Update me more!\n"
+#echo -e "Please enter the option you want:"
+#read -r OPTION
+#
+#    if [[ $OPTION == "a" ]]; then
+#
+#        echo -e "\n$LINE\nPlease Copy and Paste the command down below to your terminal:\n\n"
+#        echo -e "alias mochigit=\"/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)\"\n$LINE\n"
+#        sleep 1
+#        exit 0
+#    elif [[ $OPTION == "b" ]]; then
+#
+#        echo "alias mochigit=\"/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)\"" >> "$HOME"/.bashrc
+#        alias mochigit="/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)\""
+#        echo -e "\n$LINE1\nMochiBot-Git has sit \"mochigit\" as the alias\n$LINE1"
+#        sleep 1
+#        exit 0
+#    fi
+#
+#fi
 
 echo -e "What would you like to start with?"
 echo -e "   ==============================================================
