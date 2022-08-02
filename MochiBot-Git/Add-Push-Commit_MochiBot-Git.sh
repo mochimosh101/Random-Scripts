@@ -33,7 +33,7 @@ if [[ $ALIASANSWER == "y" ]]; then
     b. | Permanent Alias For Bash (AKA Linux Bash Right?) |
        ====================================================\n"
     echo -e "I currently only support Bash for permanent alias
-            I Promise I will ask MochiMosh to Update me more!\n"
+    I Promise I will ask MochiMosh to Update me more!\n"
     echo -e "Please enter the option you want:\n"
     read -r OPTION
 
