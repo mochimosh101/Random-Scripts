@@ -39,13 +39,15 @@ echo -e "Please enter the option you want:\n"
 read -r OPTION
 
     if [[ $OPTION == "a" ]]; then
-
-        alias mochigit="/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)\""
+        echo -e "What would you like the alias to be:\n"
+        read -r USERSALIAS
+        alias '$USERSALIAS'="/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)\""
 
     elif [[ $OPTION == "b" ]]; then
-
+        echo -e "What would you like the alias to be:\n"
+        read -r USERSALIAS
         echo "alias mochigit=\"/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)\"" >> "$HOME"/.bashrc
-        alias mochigit="/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)\""
+        alias '$USERSALIAS'="/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)\""
 
     fi
 
