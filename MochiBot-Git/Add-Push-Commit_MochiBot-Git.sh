@@ -81,7 +81,7 @@ if [[ "$ANSWER" == "a" ]]; then
     echo -e "\n$LINE1\nMochiBot-Git run ${GITS[2]}\n$LINE1\n"
     sleep 1
     ${GITS[1]}
-    echo -e "\n$LINE\nMochiBot-Git has has successfully Add Commit Push you Local Repository!\n$LINE\n"
+    echo -e "\n$LINE\nMochiBot-Git has has successfully Add Commit Push your Local Repository!\n$LINE\n"
 
 elif [[ $ANSWER == "b" ]]; then
     
