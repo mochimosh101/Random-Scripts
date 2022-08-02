@@ -4,13 +4,11 @@
 
 # **Installation**
 
-### Manual installation
-
 _On Linux_: 
 
 Open a terminal and run the following:
 
-### MochiBot-Git
+### MochiBot-Git 
 
 ```bash
 Work In Progress
