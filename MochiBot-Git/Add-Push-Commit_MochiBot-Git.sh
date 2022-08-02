@@ -5,7 +5,6 @@ export GITS=('git add .'
              'git push'
              'git pull'
             )
-readonly GITS
 
 export "LINE======================================================================================="
 readonly
