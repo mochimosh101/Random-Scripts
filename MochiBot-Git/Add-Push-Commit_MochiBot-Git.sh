@@ -62,8 +62,10 @@ if [[ "$ANSWER" == "a" ]]; then
     read -r COMMITMESSAGE
     echo
     ${GITS[0]}
+    echo -e "MochiBot-Git run ${GITS[0]}"
     sleep 1
     git commit -m "$COMMITMESSAGE"
+    echo -e "MochiBot-Git run ${GITS[1]}"
     sleep 1
     ${GITS[2]}
     sleep 1
