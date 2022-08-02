@@ -14,8 +14,8 @@ read -r USERINPUT
 
 if [[ $USERINPUT != "y" ]]; then
 
-    echo "alias mochi=\"/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/Add-Push-Commit_GitHub.sh)\"" >> "$HOME"/.bashrc
-    alias mochi="/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/Add-Push-Commit_GitHub.sh)\""
+    echo "alias mochi=\"/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_GitHub.sh)\"" >> "$HOME"/.bashrc
+    alias mochi="/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_GitHub.sh)\""
 
 fi
 
