@@ -37,7 +37,7 @@ if [[ "$ANSWER" == "a" ]]; then
     echo
     ${GITS[0]}
     sleep 1
-    git commit -m "$dontjudge""$COMMITMESSAGE""$dontjudge"
+    git commit -m "$COMMITMESSAGE"
     sleep 1
     ${GITS[2]}
     sleep 1
