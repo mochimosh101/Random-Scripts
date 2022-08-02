@@ -28,14 +28,15 @@ printf "My name is %s\n" "$BOT"
 echo -e "Would you like to have an alias for MochiBot-Git? (y/N)"
 read -r ALIASANSWER
 if [[ $ALIASANSWER == "y" ]]; then
+
 echo -e "   ====================================================
 a. | Temporary Alias                                  |
 b. | Permanent Alias For Bash (AKA Linux Bash Right?) |
    ====================================================\n"
-    echo -e "I currently only support Bash for permanent alias
-    I Promise I will ask MochiMosh to Update me more!\n"
-    echo -e "Please enter the option you want:\n"
-    read -r OPTION
+echo -e "I currently only support Bash for permanent alias
+I Promise I will ask MochiMosh to Update me more!\n"
+echo -e "Please enter the option you want:\n"
+read -r OPTION
 
     if [[ $OPTION == "a" ]]; then
 
