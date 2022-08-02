@@ -7,7 +7,10 @@ export GITS=('git add .'
             )
 
 export "LINE======================================================================================="
-readonly
+readonly LINE
+
+export "LINE1====================================="
+readonly LINE1
 
 NAME="$(whoami)"
 readonly NAME
@@ -62,12 +65,13 @@ if [[ "$ANSWER" == "a" ]]; then
     read -r COMMITMESSAGE
     echo
     ${GITS[0]}
-    echo -e "MochiBot-Git run ${GITS[0]}"
+    echo -e "\n$LINE1\nMochiBot-Git run ${GITS[0]}\n$LINE1"
     sleep 1
     git commit -m "$COMMITMESSAGE"
-    echo -e "MochiBot-Git run ${GITS[1]}"
+    echo -e "\n$LINE1\nMochiBot-Git run ${GITS[1]}\n$LINE1\n"
     sleep 1
     ${GITS[2]}
+    echo -e "\n$LINE1\nMochiBot-Git run ${GITS[2]}\n$LINE1\n"
     sleep 1
     ${GITS[1]}
     echo -e "\n$LINE\nMochiBot-Git has has successfully Add Commit Push you Local Repository!\n$LINE\n"
