@@ -3,6 +3,7 @@
 #Note to Self: This is how you make an array with ENV variables
 export GITS=('git add .'
              'git push'
+             'git pull'
             )
 # Dont jusdge me, this is all I know how to do!
 export dontjudge="\""
@@ -37,6 +38,8 @@ if [[ "$ANSWER" == "a" ]]; then
     ${GITS[0]}
     sleep 1
     git commit -m "$dontjudge""$COMMITMESSAGE""$dontjudge"
+    sleep 1
+    ${GITS[2]}
     sleep 1
     ${GITS[1]}
     echo -e "\n$LINE\nMochiBot-Git has has successfully Add Commit Push you Local Repository!\n$LINE\n"
