@@ -11,5 +11,5 @@ Open a terminal and run the following:
 ### MochiBot-Git 
 
 ```bash
-Work In Progress
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/MochiBot-Git/Add-Push-Commit_MochiBot-Git.sh)"
 ```

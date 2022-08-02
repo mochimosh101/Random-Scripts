@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #Note to Self: This is how you make an array with ENV variables
-export GITS=("git add ."
+export GITS=('git add -A'
              'git push'
              'git pull'
             )
