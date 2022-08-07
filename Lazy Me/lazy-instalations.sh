@@ -31,10 +31,16 @@ if [[ $CUSTOM_SHELL_ANSWER == "y" ]]; then
 fi
 
 # Create usernmae #
-echo -e "Please enter the username:"
-read -r CUSTOM_USERNAME
+echo -e "Would you like to create a user? [Y/n]"
+read -r CREATE_USERNAME_ANSWER
 
-echo -e "\n$LINE\nThe User Name will be: $CUSTOM_USERNAME\n$LINE\n"
+if [[ $CREATE_USERNAME_ANSWER != "n" ]]; then
+   
+    echo -e "Please enter the username:"
+    read -r CUSTOM_USERNAME
+    echo -e "\n$LINE\nThe User Name will be: $CUSTOM_USERNAME\n$LINE\n"
+
+fi
 
 # Add user discription #
 echo -e "Would you like to add a discription to this user? [Y/n]"
