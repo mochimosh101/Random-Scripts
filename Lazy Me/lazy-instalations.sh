@@ -108,8 +108,8 @@ fi
 
 
 #### Doing SSH ####
-mkdir "$USERHOME"/.ssh
-chmod 0700 "$USERHOME"/.ssh
+mkdir -c "$USERHOME"/.ssh
+chmod -c 0700 "$USERHOME"/.ssh
 echo "Making your .ssh folder..."
 sleep 2
 echo -e "MochiBot has successfully created .ssh folder into your home directory!"
@@ -127,8 +127,8 @@ read -r AUTHORIZED_KEYS_ANSWER
 
 if [[ $AUTHORIZED_KEYS_ANSWER != "n" ]]; then
 
-    mkdir authorized_keys
-    chmod 0700 authorized_keys
+    touch -c authorized_keys
+    chmod -c 0700 authorized_keys
     echo "Making your authorized_keys folder..."
     sleep 2
     echo -e "MochiBot has successfully created authorized_keys folder into your home directory!"
