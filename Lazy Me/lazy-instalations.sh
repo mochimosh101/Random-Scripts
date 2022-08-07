@@ -40,29 +40,27 @@ if [[ $CREATE_USERNAME_ANSWER != "n" ]]; then
     read -r CUSTOM_USERNAME
     echo -e "\n$LINE\nThe User Name will be: $CUSTOM_USERNAME\n$LINE\n"
 
+    # Add user discription #
+    echo -e "Would you like to add a discription to this user? [Y/n]"
+    read -r DISCRIPTION_ANSWER
+
+    if [[ $DISCRIPTION_ANSWER != "n" ]]; then
+        echo -e "\nDiscription for user:"
+        read -r USER_DISCRIPTION
+        echo -e "\n$LINE\nThe User Name will be: $USER_DISCRIPTION\n$LINE\n"
+        
+    elif [[ $DISCRIPTION_ANSWER == "n" ]]; then
+        $USER_DISCRIPTION -eq "" || $USER_DISCRIPTION -eq " "
+    fi
+
+    sudo useradd -m -s "$SHELL" -c "\"$USER_DISCRIPTION\"" "$CUSTOM_USERNAME"
+
+    echo -e "\n$LINE\nAccording to your inputs these are the results:
+    Username: $CUSTOM_USERNAME
+    User shell: $SHELL
+    User discription: $USER_DISCRIPTION\n$LINE\n"
+
 fi
-
-# Add user discription #
-echo -e "Would you like to add a discription to this user? [Y/n]"
-read -r DISCRIPTION_ANSWER
-
-if [[ $DISCRIPTION_ANSWER != "n" ]]; then
-    echo -e "\nDiscription for user:"
-    read -r USER_DISCRIPTION
-    echo -e "\n$LINE\nThe User Name will be: $USER_DISCRIPTION\n$LINE\n"
-
-elif [[ $DISCRIPTION_ANSWER == "n" ]]; then
-    
-    $USER_DISCRIPTION -eq "" 
-
-fi  
-
-sudo useradd -m -s "$SHELL" -c "\"$USER_DISCRIPTION\"" "$CUSTOM_USERNAME"
-
-echo -e "\n$LINE\nYou have successfully created a new user!
-Username: $CUSTOM_USERNAME
-User shell: $SHELL
-User discription: $USER_DISCRIPTION\n$LINE\n"
 
 # Add or create password for the user #
 echo -e "Would you like to set $CUSTOM_USERNAME's password? [Y/n]"
@@ -71,6 +69,7 @@ read -r PASSWORD_ANSWER
 if [[ $PASSWORD_ANSWER != "n" ]]; then
 
     sudo passwd "$CUSTOM_USERNAME"
+    echo -e "\n$LINE\nYou have successfully set $CUSTOM_USERNAME's password\n$LINE\n"
 
 fi
 
