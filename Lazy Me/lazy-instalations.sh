@@ -99,7 +99,7 @@ read -r HOME_DIRECROTY_ANSWER
 
 if [[ $HOME_DIRECROTY_ANSWER != "n" ]]; then
 
-    su -c "$CUSTOM_USERNAME"
+    sudo su "$CUSTOM_USERNAME"
     cd "$HOME" || echo -e "Sorry I failed you master!"; exit 1 
     echo -e "\n$LINE\nYou have successfully gone to $CUSTOM_USERNAME's Home Directory.\n$LINE\n"
     exit
