@@ -89,9 +89,7 @@ if [[ $GROUP_ANSWER != "n" ]]; then
 else
 
     echo "EERRROOORRRRRRRR"
-    sleep 1
     echo -e "You have selected something that I have not been program to do!"
-    sleep 1
     echo -e "Plrease try again and select another option..."
     exit 1
 
@@ -103,7 +101,8 @@ read -r HOME_DIRECROTY_ANSWER
 
 if [[ $HOME_DIRECROTY_ANSWER != "n" ]]; then
 
-    cd "$HOME" || return
+    su -c "$CUSTOM_USERNAME"
+    cd "$HOME" || echo -e "Sorry I failed you master!"; exit 1 
     echo -e "\n$LINE\nYou have successfully gone to $CUSTOM_USERNAME's Home Directory.\n$LINE\n"
     exit
 
