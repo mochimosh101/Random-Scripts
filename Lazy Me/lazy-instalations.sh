@@ -122,16 +122,16 @@ echo -e "MochiBot is transfering you to your .ssh folder...\n"
 cd "$HOME"/.ssh || return
 echo -e "\nMochiBot has successfully transfered you to your .ssh folder!"
 
-echo -e "Do you want your SSH key in a folder called authorized_keys? [Y/n]"
+echo -e "Do you want your SSH key in a file called authorized_keys? [Y/n]"
 read -r AUTHORIZED_KEYS_ANSWER
 
 if [[ $AUTHORIZED_KEYS_ANSWER != "n" ]]; then
 
     touch -c authorized_keys
     chmod -c 0700 authorized_keys
-    echo "Making your authorized_keys folder..."
+    echo "Making your authorized_keys file..."
     sleep 2
-    echo -e "MochiBot has successfully created authorized_keys folder into your home directory!"
+    echo -e "MochiBot has successfully created authorized_keys file into your .ssh directory!"
     sleep 1
     echo "$LINE"
     ls -al "$USERHOME/.ssh"
