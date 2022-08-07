@@ -86,13 +86,6 @@ if [[ $GROUP_ANSWER != "n" ]]; then
     User discription: $USER_DISCRIPTION
     User Group: $CUSTOM_GROUP\n$LINE\n"
 
-else
-
-    echo "EERRROOORRRRRRRR"
-    echo -e "You have selected something that I have not been program to do!"
-    echo -e "Plrease try again and select another option..."
-    exit 1
-
 fi
 
 #### GO TO THE USER HOME DIRECTORY ####
