@@ -16,6 +16,8 @@ _On Linux_:
 
 Open a terminal and run the following:
 
+📝 Note: Ubuntu Based Only
+
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mochimosh101/Random-Scripts/main/Lazy%20Me/lazy-instalations.sh)"
 ```
