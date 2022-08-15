@@ -27,25 +27,33 @@ if [[ $CREATE_USERNAME_ANSWER != "n" ]]; then
 echo -e "Please enter the username:"
 read -r CUSTOM_USERNAME
 echo -e "\n$LINE\nThe User Name will be: $CUSTOM_USERNAME\n$LINE\n"
-# Add user discription #
-echo -e "Would you like to add a discription to this user? [Y/n]"
-read -r DISCRIPTION_ANSWER
-
 # Could add new shell to the user #
 echo -e "Would you like to add a custom shell? [y/N]"
 read -r CUSTOM_SHELL_ANSWER
 
 elif [[ $CUSTOM_SHELL_ANSWER == "y" && $CREATE_USERNAME_ANSWER != "n" ]]; then
 
-    echo -e "\nShell for the user:"
-    read -r SHELL
+echo -e "\nShell for the user:"
+read -r SHELL
 
-    echo -e "\n$LINE\nThe Shell will be: $SHELL\n$LINE\n"
+echo -e "\n$LINE\nThe Shell will be: $SHELL\n$LINE\n"
 
+# Add user discription #
+echo -e "Would you like to add a discription to this user? [Y/n]"
+read -r DISCRIPTION_ANSWER
 elif [[ $DISCRIPTION_ANSWER != "n" && $CREATE_USERNAME_ANSWER != "n"  ]]; then
-    echo -e "\nDiscription for user:"
-    read -r USER_DISCRIPTION
-    echo -e "\n$LINE\nThe User Name will be: $USER_DISCRIPTION\n$LINE\n"
+echo -e "\nDiscription for user:"
+read -r USER_DISCRIPTION
+echo -e "\n$LINE\nThe User Name will be: $USER_DISCRIPTION\n$LINE\n"
+sudo useradd -m -s "$SHELL" -c "\"$USER_DISCRIPTION\"" "$CUSTOM_USERNAME"
+echo -e "\n$LINE\nAccording to your inputs these are the results:
+Username: $CUSTOM_USERNAME
+User shell: $SHELL
+User discription: $USER_DISCRIPTION\n$LINE\n"
+
+# Add or create password for the user #
+echo -e "Would you like to set $CUSTOM_USERNAME's password? [Y/n]"
+read -r PASSWORD_ANSWER
     
 elif [[ $DISCRIPTION_ANSWER == "n" && $CREATE_USERNAME_ANSWER != "n" ]]; then
     $USER_DISCRIPTION -eq "" || $USER_DISCRIPTION -eq " "
@@ -61,8 +69,8 @@ read -r PASSWORD_ANSWER
 
 elif [[ $PASSWORD_ANSWER != "n" && $CREATE_USERNAME_ANSWER != "n" ]]; then
 
-    sudo passwd "$CUSTOM_USERNAME"
-    echo -e "\n$LINE\nYou have successfully set $CUSTOM_USERNAME's password\n$LINE\n"
+sudo passwd "$CUSTOM_USERNAME"
+echo -e "\n$LINE\nYou have successfully set $CUSTOM_USERNAME's password\n$LINE\n"
 
 # Add user to a group #
 echo -e "\nWould you like to add $CUSTOM_USERNAME to a group? [Y/n]"
@@ -70,17 +78,15 @@ read -r GROUP_ANSWER
 
 elif [[ $GROUP_ANSWER != "n" && $CREATE_USERNAME_ANSWER != "n" ]]; then
 
-    echo -e "Which group would you like to add $CUSTOM_USERNAME to:"
-    read -r CUSTOM_GROUP
-
-    sudo usermod -aG "$CUSTOM_GROUP" "$CUSTOM_USERNAME"
-    sleep 1
-
-    echo -e "\n$LINE\nYou have successfully added $CUSTOM_USERNAME to $CUSTOM_GROUP.
-    Username: $CUSTOM_USERNAME
-    User shell: $SHELL
-    User discription: $USER_DISCRIPTION
-    User Group: $CUSTOM_GROUP\n$LINE\n"
+echo -e "Which group would you like to add $CUSTOM_USERNAME to:"
+read -r CUSTOM_GROUP
+sudo usermod -aG "$CUSTOM_GROUP" "$CUSTOM_USERNAME"
+sleep 1
+echo -e "\n$LINE\nYou have successfully added $CUSTOM_USERNAME to $CUSTOM_GROUP.
+Username: $CUSTOM_USERNAME
+User shell: $SHELL
+User discription: $USER_DISCRIPTION
+User Group: $CUSTOM_GROUP\n$LINE\n"
 
 #### GO TO THE USER HOME DIRECTORY ####
 echo -e "\nWould you like to go to $CUSTOM_USERNAME's Home Directory? [Y/n]"
@@ -143,7 +149,7 @@ if [[ $AUTHORIZED_KEYS_ANSWER != "n" ]]; then
         sleep 1
         echo -e "Would you like to restart the SSHD service? [Y/n]"
         read -r SSH_RESTART_ANSWER
-        if [[ $SSH_RESTART_ANSWER != "n" ]]; then
+        elif [[ $SSH_RESTART_ANSWER != "n" ]]; then
             sudo systemctl restart sshd
             echo -e "\n$LINE\nYou have successfully restarted the SSHD service!\n$LINE\n"
             sleep 1
@@ -153,7 +159,6 @@ if [[ $AUTHORIZED_KEYS_ANSWER != "n" ]]; then
         echo -e "MochiBot is transfering you to your home directory...\n"
         cd "$HOME" || return
         echo -e "\nMochiBot has successfully transfered you to your home directory!"
-        fi
     fi
 
 fi
