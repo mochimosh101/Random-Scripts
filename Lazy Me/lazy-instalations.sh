@@ -17,18 +17,6 @@ sudo apt-get update; sudo apt upgrade -y
 echo -e "\n$LINE\nNote: Defualt shell will be /bin/bash\n$LINE\n"
 sudo echo
 
-# Could add new shell to the user #
-echo -e "Would you like to add a custom shell? [y/N]"
-read -r CUSTOM_SHELL_ANSWER
-
-if [[ $CUSTOM_SHELL_ANSWER == "y" ]]; then
-
-    echo -e "\nShell for the user:"
-    read -r SHELL
-
-    echo -e "\n$LINE\nThe Shell will be: $SHELL\n$LINE\n"
-
-fi
 
 # Create usernmae #
 echo -e "Would you like to create a user? [Y/n]"
@@ -36,48 +24,51 @@ read -r CREATE_USERNAME_ANSWER
 
 if [[ $CREATE_USERNAME_ANSWER != "n" ]]; then
    
-    echo -e "Please enter the username:"
-    read -r CUSTOM_USERNAME
-    echo -e "\n$LINE\nThe User Name will be: $CUSTOM_USERNAME\n$LINE\n"
+echo -e "Please enter the username:"
+read -r CUSTOM_USERNAME
+echo -e "\n$LINE\nThe User Name will be: $CUSTOM_USERNAME\n$LINE\n"
+# Add user discription #
+echo -e "Would you like to add a discription to this user? [Y/n]"
+read -r DISCRIPTION_ANSWER
 
-    # Add user discription #
-    echo -e "Would you like to add a discription to this user? [Y/n]"
-    read -r DISCRIPTION_ANSWER
+# Could add new shell to the user #
+echo -e "Would you like to add a custom shell? [y/N]"
+read -r CUSTOM_SHELL_ANSWER
 
-    if [[ $DISCRIPTION_ANSWER != "n" ]]; then
-        echo -e "\nDiscription for user:"
-        read -r USER_DISCRIPTION
-        echo -e "\n$LINE\nThe User Name will be: $USER_DISCRIPTION\n$LINE\n"
-        
-    elif [[ $DISCRIPTION_ANSWER == "n" ]]; then
-        $USER_DISCRIPTION -eq "" || $USER_DISCRIPTION -eq " "
-    fi
+elif [[ $CUSTOM_SHELL_ANSWER == "y" && $CREATE_USERNAME_ANSWER != "n" ]]; then
 
-    sudo useradd -m -s "$SHELL" -c "\"$USER_DISCRIPTION\"" "$CUSTOM_USERNAME"
+    echo -e "\nShell for the user:"
+    read -r SHELL
 
-    echo -e "\n$LINE\nAccording to your inputs these are the results:
-    Username: $CUSTOM_USERNAME
-    User shell: $SHELL
-    User discription: $USER_DISCRIPTION\n$LINE\n"
+    echo -e "\n$LINE\nThe Shell will be: $SHELL\n$LINE\n"
 
-fi
+elif [[ $DISCRIPTION_ANSWER != "n" && $CREATE_USERNAME_ANSWER != "n"  ]]; then
+    echo -e "\nDiscription for user:"
+    read -r USER_DISCRIPTION
+    echo -e "\n$LINE\nThe User Name will be: $USER_DISCRIPTION\n$LINE\n"
+    
+elif [[ $DISCRIPTION_ANSWER == "n" && $CREATE_USERNAME_ANSWER != "n" ]]; then
+    $USER_DISCRIPTION -eq "" || $USER_DISCRIPTION -eq " "
+sudo useradd -m -s "$SHELL" -c "\"$USER_DISCRIPTION\"" "$CUSTOM_USERNAME"
+echo -e "\n$LINE\nAccording to your inputs these are the results:
+Username: $CUSTOM_USERNAME
+User shell: $SHELL
+User discription: $USER_DISCRIPTION\n$LINE\n"
 
 # Add or create password for the user #
 echo -e "Would you like to set $CUSTOM_USERNAME's password? [Y/n]"
 read -r PASSWORD_ANSWER
 
-if [[ $PASSWORD_ANSWER != "n" ]]; then
+elif [[ $PASSWORD_ANSWER != "n" && $CREATE_USERNAME_ANSWER != "n" ]]; then
 
     sudo passwd "$CUSTOM_USERNAME"
     echo -e "\n$LINE\nYou have successfully set $CUSTOM_USERNAME's password\n$LINE\n"
-
-fi
 
 # Add user to a group #
 echo -e "\nWould you like to add $CUSTOM_USERNAME to a group? [Y/n]"
 read -r GROUP_ANSWER
 
-if [[ $GROUP_ANSWER != "n" ]]; then
+elif [[ $GROUP_ANSWER != "n" && $CREATE_USERNAME_ANSWER != "n" ]]; then
 
     echo -e "Which group would you like to add $CUSTOM_USERNAME to:"
     read -r CUSTOM_GROUP
@@ -91,18 +82,15 @@ if [[ $GROUP_ANSWER != "n" ]]; then
     User discription: $USER_DISCRIPTION
     User Group: $CUSTOM_GROUP\n$LINE\n"
 
-fi
-
 #### GO TO THE USER HOME DIRECTORY ####
 echo -e "\nWould you like to go to $CUSTOM_USERNAME's Home Directory? [Y/n]"
 read -r HOME_DIRECROTY_ANSWER
 
-if [[ $HOME_DIRECROTY_ANSWER != "n" ]]; then
+elif [[ $HOME_DIRECROTY_ANSWER != "n" && $CREATE_USERNAME_ANSWER != "n" ]]; then
 
     sudo su "$CUSTOM_USERNAME"
     cd "$HOME" || echo -e "Sorry I failed you master!"; exit 1 
     echo -e "\n$LINE\nYou have successfully gone to $CUSTOM_USERNAME's Home Directory.\n$LINE\n"
-    exit
 
 fi
 
